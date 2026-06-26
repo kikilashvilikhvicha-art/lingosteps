@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "fni6CgB0Bhqb6qtj4BA0H"
+uri = "file://artifacts/lingosteps/assets/images/icon.png"
+type = "image"
+title = "lingosteps app icon"
