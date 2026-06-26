@@ -1,0 +1,52 @@
+{
+  "expo": {
+    "name": "LingoSteps",
+    "slug": "lingosteps",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "lingosteps",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#5B4FE9"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.lingosteps.app"
+    },
+    "android": {
+      "package": "com.lingosteps.app",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#5B4FE9"
+      },
+      "permissions": []
+    },
+    "web": {
+      "favicon": "./assets/images/icon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://replit.com/"
+        }
+      ],
+      "expo-font",
+      "expo-web-browser"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true,
+      "baseUrl": "/lingosteps"
+    },
+    "extra": {
+      "eas": {}
+    }
+  }
+}
