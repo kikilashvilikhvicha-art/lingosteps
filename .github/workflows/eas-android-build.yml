@@ -16,6 +16,9 @@ jobs:
   build:
     name: Build Android
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: artifacts/lingosteps
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,6 +34,7 @@ jobs:
           version: 10
 
       - name: Install workspace dependencies
+        working-directory: .
         run: pnpm install --frozen-lockfile
 
       - name: Setup Expo + EAS CLI (with your account token)
@@ -39,16 +43,22 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
+      - name: Link EAS project
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          EAS_BUILD_NO_EXPO_GO_WARNING: "true"
+        run: eas init --id 4f81a4dc-0441-4ebd-bec3-32559c5cac14 --force --non-interactive
+
       - name: Run EAS Build
-        working-directory: artifacts/lingosteps
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          EAS_BUILD_NO_EXPO_GO_WARNING: "true"
         run: |
           eas build \
             --platform android \
             --profile ${{ github.event.inputs.profile }} \
             --non-interactive \
             --no-wait
-        # --no-wait returns immediately after queuing.
-        # The finished AAB will be at: expo.dev → Projects → LingoSteps → Builds
 
       - name: Where to find your AAB
         run: |
